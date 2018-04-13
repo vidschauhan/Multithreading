@@ -2,19 +2,32 @@ package com.example.concurrency;
 
 public class Synchronization {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		Add ad = new Add(); 
 		
 	Thread t1 = new Thread(()->{
 		for(int i=1;i<=5;i++) {
-			ad.increment();		//synchronized(ad){ad.increment();}
+			ad.increment();	
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+		
+				e.printStackTrace();
+			}//synchronized(ad){ad.increment();}
 		}
 	});
 	t1.start();
+	t1.join();
 	
 	new Thread(()->{
 		for(int i=1;i<=5;i++) {
 		ad.increment();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+	
+			e.printStackTrace();
+		}//
 		}
 	}).start();
 	
