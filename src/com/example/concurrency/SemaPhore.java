@@ -15,7 +15,6 @@ public class SemaPhore {
 			t1.join();
 			t2.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
